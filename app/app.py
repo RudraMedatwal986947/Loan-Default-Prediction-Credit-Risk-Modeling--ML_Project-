@@ -38,8 +38,6 @@ if st.button("Predict Risk"):
     # Force correct column order
     input_data = input_data[features]
 
-if st.button("Predict Risk"):
-
     prediction = model.predict(input_data)[0]
     probability = model.predict_proba(input_data)[0][1]
 
