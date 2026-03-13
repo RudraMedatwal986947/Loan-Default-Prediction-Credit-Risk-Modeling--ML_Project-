@@ -38,10 +38,13 @@ if st.button("Predict Risk"):
     # Force correct column order
     input_data = input_data[features]
 
+if st.button("Predict Risk"):
+
     prediction = model.predict(input_data)[0]
     probability = model.predict_proba(input_data)[0][1]
 
     st.subheader("Prediction Result")
+
     st.write("Default Probability:", round(probability,3))
 
     if probability < 0.15:
@@ -50,7 +53,6 @@ if st.button("Predict Risk"):
         st.warning("Medium Risk Borrower")
     else:
         st.error("High Risk of Default")
-    
-st.write("Default Probability:", round(probability,3))
+
 
 print("Risk levels are determined using the predicted probability of default. Higher probabilities indicate a greater chance that the borrower will fail to repay the loan.")
