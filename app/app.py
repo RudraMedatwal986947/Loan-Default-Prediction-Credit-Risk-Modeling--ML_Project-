@@ -2,8 +2,8 @@ import streamlit as st
 import joblib
 import pandas as pd
 
-model = joblib.load("../models/loan_default_model.pkl")
-features = joblib.load("../models/model_features.pkl")
+model = joblib.load("models/loan_default_model.pkl")
+features = joblib.load("models/model_features.pkl")
 
 st.title("Loan Default Prediction System")
 
