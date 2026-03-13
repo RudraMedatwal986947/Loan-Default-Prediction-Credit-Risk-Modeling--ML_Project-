@@ -1,0 +1,30 @@
+__pycache__/
+.ipynb_checkpoints/
+.env
+data/raw/
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large raw data (keep processed)
+data/raw/
+
+# Optional: if dataset is huge
+# data/processed/*.csv
+
+__pycache__/
+.ipynb_checkpoints
+*.pyc
+data/raw/
+data/processed/
+.env
