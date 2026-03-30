@@ -43,7 +43,7 @@ if st.button("Predict Risk"):
 
     st.subheader("Prediction Result")
 
-    st.write("Default Probability:", round(probability,3))
+    st.write("Default Probability:", round(probability,3)*100)
 
     if probability < 0.15:
         st.success("Low Risk Borrower")
