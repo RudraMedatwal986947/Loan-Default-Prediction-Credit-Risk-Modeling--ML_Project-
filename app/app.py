@@ -4,11 +4,7 @@ import pandas as pd
 
 model = joblib.load("models/logistic_model.joblib")
 scaler = joblib.load("models/scaler.joblib")
-features = [
-    "loan_amnt", "int_rate", "annual_inc", "dti",
-    "revol_util", "revol_bal", "installment",
-    "total_acc", "open_acc", "credit_history_years"
-]
+features = joblib.load("models/model_features.pkl")
 
 st.title("Loan Default Prediction System")
 st.write("Model Used: Logistic Regression (Optimized for Recall)")
