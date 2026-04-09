@@ -2,10 +2,16 @@ import streamlit as st
 import joblib
 import pandas as pd
 
-model = joblib.load("../models/loan_default_model.pkl")
-features = joblib.load("../models/model_features.pkl")
+model = joblib.load("../models/logistic_model.joblib")
+scaler = joblib.load("../models/scaler.joblib")
+features = [
+    "loan_amnt", "int_rate", "annual_inc", "dti",
+    "revol_util", "revol_bal", "installment",
+    "total_acc", "open_acc", "credit_history_years"
+]
 
 st.title("Loan Default Prediction System")
+st.write("Model Used: Logistic Regression (Optimized for Recall)")
 
 loan_amnt = st.number_input("Loan Amount")
 int_rate = st.number_input("Interest Rate")
@@ -34,23 +40,18 @@ if st.button("Predict Risk"):
     }
 
     input_data = pd.DataFrame([input_dict])
-
-    # Force correct column order
     input_data = input_data[features]
 
-    prediction = model.predict(input_data)[0]
+    input_data = scaler.transform(input_data)  # if used
+
     probability = model.predict_proba(input_data)[0][1]
 
     st.subheader("Prediction Result")
     st.write("Default Probability:", round(probability,3))
 
-    if probability < 0.15:
+    if probability < 0.3:
         st.success("Low Risk Borrower")
-    elif probability < 0.30:
+    elif probability < 0.6:
         st.warning("Medium Risk Borrower")
     else:
         st.error("High Risk of Default")
-    
-st.write("Default Probability:", round(probability,3))
-
-print("Risk levels are determined using the predicted probability of default. Higher probabilities indicate a greater chance that the borrower will fail to repay the loan.")
