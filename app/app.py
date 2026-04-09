@@ -43,8 +43,8 @@ if st.button("Predict Risk"):
     st.write("Default Probability:", round(probability,3))
 
     if probability < 0.3:
-        st.success("Low Risk Borrower")
+        risk = "Low Risk"
     elif probability < 0.6:
-        st.warning("Medium Risk Borrower")
+        risk = "Medium Risk"
     else:
-        st.error("High Risk of Default")
+        risk = "High Risk"
