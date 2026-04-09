@@ -43,7 +43,8 @@ if st.button("Predict Risk"):
     probability = model.predict_proba(input_data)[0][1]
 
     st.subheader("Prediction Result")
-
+    
+    st.write(input_data)
     st.write("Default Probability:", round(probability,3))
 
     if probability < 0.3:
@@ -52,4 +53,3 @@ if st.button("Predict Risk"):
         st.warning("Medium Risk Borrower")
     else:
         st.error("High Risk of Default")
-    st.write(input_data)
