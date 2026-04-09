@@ -47,6 +47,7 @@ if st.button("Predict Risk"):
     probability = model.predict_proba(input_data)[0][1]
 
     st.subheader("Prediction Result")
+
     st.write("Default Probability:", round(probability,3))
 
     if probability < 0.3:
