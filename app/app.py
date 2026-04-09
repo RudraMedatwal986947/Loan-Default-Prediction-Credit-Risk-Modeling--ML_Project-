@@ -2,7 +2,7 @@ import streamlit as st
 import joblib
 import pandas as pd
 
-model = joblib.load("models/logistic_model.joblib")
+model = joblib.load("models/loan_model.joblib")
 scaler = joblib.load("models/scaler.joblib")
 features = joblib.load("models/model_features.pkl")
 
