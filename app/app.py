@@ -1,7 +1,7 @@
 import streamlit as st
 import joblib
 import pandas as pd
-
+st.write(input_data)
 model = joblib.load("models/logistic_model.joblib")
 scaler = joblib.load("models/scaler.joblib")
 features = joblib.load("models/model_features.pkl")
