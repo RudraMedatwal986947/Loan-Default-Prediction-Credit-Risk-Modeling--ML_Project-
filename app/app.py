@@ -34,7 +34,6 @@ if st.button("Predict Risk"):
     }
 
     input_data = pd.DataFrame([input_dict])
-    input_data = scaler.transform(input_data) 
 
     probability = model.predict_proba(input_data)[0][1]
 
