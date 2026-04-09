@@ -36,7 +36,7 @@ if st.button("Predict Risk"):
     }
 
     input_data = pd.DataFrame([input_dict])
-    input_data = input_data[features]
+    input_data = input_data.reindex(columns=features, fill_value=0)
 
     input_data = scaler.transform(input_data) 
 
