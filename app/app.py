@@ -2,8 +2,8 @@ import streamlit as st
 import joblib
 import pandas as pd
 
-model = joblib.load("../models/logistic_model.joblib")
-scaler = joblib.load("../models/scaler.joblib")
+model = joblib.load("models/logistic_model.joblib")
+scaler = joblib.load("models/scaler.joblib")
 features = [
     "loan_amnt", "int_rate", "annual_inc", "dti",
     "revol_util", "revol_bal", "installment",
