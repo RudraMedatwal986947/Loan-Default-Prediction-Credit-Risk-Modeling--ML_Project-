@@ -3,8 +3,6 @@ import joblib
 import pandas as pd
 
 model = joblib.load("models/loan_model.joblib")
-scaler = joblib.load("models/scaler.joblib")
-features = joblib.load("models/model_features.pkl")
 
 st.title("Loan Default Prediction System")
 st.write("Model Used: Logistic Regression (Optimized for Recall)")
@@ -36,9 +34,6 @@ if st.button("Predict Risk"):
     }
 
     input_data = pd.DataFrame([input_dict])
-    input_data = input_data.reindex(columns=features, fill_value=0)
-
-    input_data = scaler.transform(input_data) 
 
     probability = model.predict_proba(input_data)[0][1]
 
