@@ -37,6 +37,11 @@ if st.button("Predict Risk"):
 
     probability = model.predict_proba(input_data)[0][1]
 
+    st.write("Input Data:", input_data)
+
+    proba = model.predict_proba(input_data)
+    st.write("Raw Probabilities:", proba)
+    
     st.subheader("Prediction Result")
     
     st.write(input_data)
