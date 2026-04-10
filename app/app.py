@@ -2,16 +2,16 @@ import streamlit as st
 import joblib
 import pandas as pd
 
-model = joblib.load("models\\loan_model.joblib")
-
+model = joblib.load("models/loan_model.joblib")
+st.write(type(model))
 st.title("Loan Default Prediction System")
 st.write("Model Used: Logistic Regression (Optimized for Recall)")
 
 loan_amnt = st.number_input("Loan Amount")
 int_rate = st.number_input("Interest Rate (%)") / 100
-revol_util = st.number_input("Revolving Utilization (%)") / 100
 annual_inc = st.number_input("Annual Income")
 dti = st.number_input("Debt to Income Ratio")
+revol_util = st.number_input("Revolving Utilization (%)") / 100
 revol_bal = st.number_input("Revolving Balance")
 installment = st.number_input("Installment")
 total_acc = st.number_input("Total Accounts")
@@ -37,6 +37,11 @@ if st.button("Predict Risk"):
 
     probability = model.predict_proba(input_data)[0][1]
 
+    st.write("Input Data:", input_data)
+
+    proba = model.predict_proba(input_data)
+    st.write("Raw Probabilities:", proba)
+    
     st.subheader("Prediction Result")
     
     st.write(input_data)
