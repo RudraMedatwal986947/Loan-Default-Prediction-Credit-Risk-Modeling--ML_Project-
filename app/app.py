@@ -32,20 +32,25 @@ if st.button("Predict Risk"):
         "credit_history_years": credit_history_years
     }
 
-    input_data = pd.DataFrame([input_dict])
-    
-    st.write("Columns order:", input_data.columns.tolist())
-    probability = model.predict_proba(input_data)[0][1]
+    features = [
+        "loan_amnt", "int_rate", "annual_inc", "dti",
+        "revol_util", "revol_bal", "installment",
+        "total_acc", "open_acc", "credit_history_years"
+    ]
 
-    st.write("Input Data:", input_data)
+    input_data = pd.DataFrame([input_dict])
+
+    # 🔥 CRITICAL FIX
+    input_data = input_data[features]
+    input_data = input_data.astype(float)
+
+    st.write("Final Input:", input_data)
 
     proba = model.predict_proba(input_data)
+    probability = proba[0][1]
+
     st.write("Raw Probabilities:", proba)
-    
-    st.subheader("Prediction Result")
-    
-    st.write(input_data)
-    st.write("Default Probability:", round(probability,3))
+    st.write("Default Probability:", round(probability, 3))
 
     if probability < 0.3:
         risk = "Low Risk"
@@ -53,6 +58,8 @@ if st.button("Predict Risk"):
         risk = "Medium Risk"
     else:
         risk = "High Risk"
+
+    st.write("Risk Level:", risk)
 
 
 test_input = pd.DataFrame([{
