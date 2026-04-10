@@ -70,3 +70,6 @@ test_input = pd.DataFrame([{
 
 st.write("TEST INPUT:", test_input)
 st.write("MODEL OUTPUT:", model.predict_proba(test_input))
+
+import os
+st.write("MODEL PATH:", os.path.abspath("models/loan_model.joblib"))
