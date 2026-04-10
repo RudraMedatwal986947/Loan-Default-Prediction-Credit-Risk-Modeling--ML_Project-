@@ -76,3 +76,6 @@ import os
 st.write("Current working directory:", os.getcwd())
 st.write("Files here:", os.listdir())
 st.write("Models folder:", os.listdir("models") if os.path.exists("models") else "No models folder")
+
+
+st.write("Columns order:", input_data.columns.tolist())
