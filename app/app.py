@@ -54,6 +54,8 @@ if st.button("Predict Risk"):
     else:
         risk = "High Risk"
 
+    
+    st.write("Columns order:", input_data.columns.tolist())
 
 test_input = pd.DataFrame([{
     "loan_amnt": 5000,
@@ -78,4 +80,3 @@ st.write("Files here:", os.listdir())
 st.write("Models folder:", os.listdir("models") if os.path.exists("models") else "No models folder")
 
 
-st.write("Columns order:", input_data.columns.tolist())
