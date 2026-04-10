@@ -3,7 +3,7 @@ import joblib
 import pandas as pd
 
 model = joblib.load("models/loan_model.joblib")
-
+st.write(type(model))
 st.title("Loan Default Prediction System")
 st.write("Model Used: Logistic Regression (Optimized for Recall)")
 
