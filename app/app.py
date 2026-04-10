@@ -52,36 +52,13 @@ if st.button("Predict Risk"):
     st.write("Raw Probabilities:", proba)
     st.write("Default Probability:", round(probability, 3))
 
-    if probability < 0.3:
+    if probability < 0.35:
         risk = "Low Risk"
-    elif probability < 0.6:
+    elif probability < 0.65:
         risk = "Medium Risk"
     else:
         risk = "High Risk"
 
     st.write("Risk Level:", risk)
-
-
-test_input = pd.DataFrame([{
-    "loan_amnt": 5000,
-    "int_rate": 0.1065,
-    "annual_inc": 24000,
-    "dti": 27.65,
-    "revol_util": 0.837,
-    "revol_bal": 13648,
-    "installment": 162.87,
-    "total_acc": 9,
-    "open_acc": 3,
-    "credit_history_years": 41.29863
-}])
-
-st.write("TEST INPUT:", test_input)
-st.write("MODEL OUTPUT:", model.predict_proba(test_input))
-
-import os
-
-st.write("Current working directory:", os.getcwd())
-st.write("Files here:", os.listdir())
-st.write("Models folder:", os.listdir("models") if os.path.exists("models") else "No models folder")
 
 
