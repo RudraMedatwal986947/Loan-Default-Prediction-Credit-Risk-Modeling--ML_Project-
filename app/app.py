@@ -2,7 +2,7 @@ import streamlit as st
 import joblib
 import pandas as pd
 
-model = joblib.load("/loan_model.joblib")
+model = joblib.load("models/loan_model.joblib")
 st.write(type(model))
 st.title("Loan Default Prediction System")
 st.write("Model Used: Logistic Regression (Optimized for Recall)")
@@ -72,4 +72,7 @@ st.write("TEST INPUT:", test_input)
 st.write("MODEL OUTPUT:", model.predict_proba(test_input))
 
 import os
-st.write("MODEL PATH:", os.path.abspath("models/loan_model.joblib"))
+
+st.write("Current working directory:", os.getcwd())
+st.write("Files here:", os.listdir())
+st.write("Models folder:", os.listdir("models") if os.path.exists("models") else "No models folder")
