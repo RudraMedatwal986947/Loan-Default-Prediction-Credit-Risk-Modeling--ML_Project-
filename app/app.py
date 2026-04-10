@@ -33,7 +33,8 @@ if st.button("Predict Risk"):
     }
 
     input_data = pd.DataFrame([input_dict])
-
+    
+    st.write("Columns order:", input_data.columns.tolist())
     probability = model.predict_proba(input_data)[0][1]
 
     st.write("Input Data:", input_data)
@@ -53,8 +54,6 @@ if st.button("Predict Risk"):
     else:
         risk = "High Risk"
 
-    
-    st.write("Columns order:", input_data.columns.tolist())
 
 test_input = pd.DataFrame([{
     "loan_amnt": 5000,
